@@ -10,8 +10,13 @@ import UIKit
 import CoreData
 import NVActivityIndicatorView
 import MessageUI
+import StoreKit
 
-class SettingViewController: UIViewController, MFMailComposeViewControllerDelegate {
+class SettingViewController: UIViewController,
+                             MFMailComposeViewControllerDelegate,
+                             SKStoreProductViewControllerDelegate {
+    
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var copyrightLabel: UILabel!
     let menuList = ["앱 리뷰하기", "앱 피드백 보내기", "아이클라우드로 백업", "아이클라우드에서 복원","배너 광고 제거","라이선스","버전 정보"]
@@ -93,13 +98,22 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+    func productViewControllerDidFinish(_ viewController:
+                                            SKStoreProductViewController) {
+        viewController.dismiss(animated: true, completion: nil)
+    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
             case 0:
-                let alert = UIAlertController(title: "준비중입니다", message: "", preferredStyle: .alert)
-                present(alert, animated: true, completion: nil)
-                dismiss(animated: true, completion: nil)
+                if let url = URL(string: "itms-apps://itunes.apple.com/app/id1562617132?action=write-review"),
+                    UIApplication.shared.canOpenURL(url) {
+                    if #available(iOS 10.0, *) {
+                        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                    } else {
+                        UIApplication.shared.openURL(url)
+                    }
+                }
             case 1:
                 if MFMailComposeViewController.canSendMail() {
                     let compseVC = MFMailComposeViewController()
