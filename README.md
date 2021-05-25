@@ -3,4 +3,9 @@
 
 > iOS 개인 프로젝트 : 포토 캘린더
 
+## Version
+### Ver. 1
+- 1.0: App Store release (2021.04.14)
+- 1.1: iPad version release (2021.05.10)
+
 ###### this page will be updated very sooon ;)
