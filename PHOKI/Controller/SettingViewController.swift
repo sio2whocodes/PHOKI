@@ -10,11 +10,9 @@ import UIKit
 import CoreData
 import NVActivityIndicatorView
 import MessageUI
-import StoreKit
 
 class SettingViewController: UIViewController,
-                             MFMailComposeViewControllerDelegate,
-                             SKStoreProductViewControllerDelegate {
+                             MFMailComposeViewControllerDelegate {
     
     
     @IBOutlet weak var tableView: UITableView!
@@ -96,11 +94,6 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
             cell.label.text = menuList[indexPath.row]
             return cell
         }
-    }
-    
-    func productViewControllerDidFinish(_ viewController:
-                                            SKStoreProductViewController) {
-        viewController.dismiss(animated: true, completion: nil)
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
