@@ -2,3 +2,5 @@
 [<img src = "https://devimages-cdn.apple.com/app-store/marketing/guidelines/images/badge-download-on-the-app-store.svg">](https://apps.apple.com/us/app/%ED%8F%AC%ED%82%A4/id1562617132#?platform=iphone)    
 
 > iOS 개인 프로젝트 : 포토 캘린더
+
+###### this page will be updated very sooon ;)
