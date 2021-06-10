@@ -249,6 +249,10 @@ extension DetailViewController: UIImagePickerControllerDelegate, UINavigationCon
         collectionView.reloadData()
         dismiss(animated: true, completion: nil)
     }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        print("end")
+        view.endEditing(true)
+    }
 }
 
 extension DetailViewController: UITextViewDelegate {
@@ -257,8 +261,11 @@ extension DetailViewController: UITextViewDelegate {
         if text == "\n" {
             textView.resignFirstResponder()
         }
-        return true
+        guard let str = textView.text else { return true }
+        let newLength = str.count + text.count - range.length
+        return newLength <= 300
     }
+    
     
     @objc func keyBoardWillShow(_ sender: Notification){
         self.view.frame.origin.y = -150
@@ -268,9 +275,16 @@ extension DetailViewController: UITextViewDelegate {
         self.view.frame.origin.y = 0
     }
     
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        let curruntCell = collectionView.visibleCells[0] as! ImageCell
+        curruntCell.button.isHidden = true
+    }
+    
     func textViewDidEndEditing(_ textView: UITextView) {
         myContent.memos[textView.tag] = textView.text
         contentHelper.updateContent(mycontent: myContent)
+        let curruntCell = collectionView.visibleCells[0] as! ImageCell
+        curruntCell.button.isHidden = false
     }
 }
 
