@@ -57,6 +57,16 @@ class ViewController: UIViewController, GADBannerViewDelegate, GADFullScreenCont
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        if let adFreeDay = UserDefaults.standard.object(forKey: "adFreeDay") as? Date {
+            adPresent = adFreeDay < Date()
+        } else {
+            adPresent = true
+        }
+        if adPresent {
+            AdBannerSetting()
+        } else {
+            removeBanner()
+        }
         calendarInfoList = calendarInfoHelper.fetchCalendarInfoList()
         if calendarInfoList.count == 0 {
             let cii = CalendarInfoInstance(title: "MY CALENDAR", image: (UIImage(named: "bluecloud")?.jpegData(compressionQuality: 1))!, id: "0", index: 0)
@@ -126,63 +136,15 @@ class ViewController: UIViewController, GADBannerViewDelegate, GADFullScreenCont
         addButton.layer.shadowOpacity = 0.3
     }
     
-    /*
-    @IBAction func adCloseBtn(_ sender: Any) {
-        let alert = UIAlertController(title: "배너 광고 제거", message: "짧은 동영상 광고를 시청하면 10일 동안 배너광고가 나타나지 않습니다.", preferredStyle: .alert)
-        let palyAction = UIAlertAction(title: "광고 시청", style: .default, handler: startRewardAd(_:))
-        let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
-        alert.addAction(palyAction)
-        alert.addAction(cancelAction)
-        self.present(alert, animated: true, completion: nil)
-    }
-     */
-    
-    func startRewardAd(_: UIAlertAction){
-        indicator.startAnimating()
-        var loadingSec = 0
-        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true){ _ in
-            loadingSec += 1
-            if loadingSec > 30 {
-                self.timer?.invalidate()
-                self.timer = nil
-                self.indicator.stopAnimating()
-            }
-        }
-        let request = GADRequest()
-        GADRewardedAd.load(withAdUnitID: rewardAdId,
-                           request: request) { (ad, error) in
-                    if let error = error {
-                        print("Rewarded ad failed to load with error: \(error.localizedDescription)")
-                        let alert = UIAlertController(title: "광고 로딩 실패", message: "광고를 불러오지 못했습니다.", preferredStyle: .alert)
-                        let act = UIAlertAction(title: "확인", style: .cancel, handler: nil)
-                        alert.addAction(act)
-                        self.present(alert, animated: true, completion: nil)
-                        return
-                    }
-                    self.rewardedAd = ad
-                    self.rewardedAd?.fullScreenContentDelegate = self
-                    self.indicator.stopAnimating()
-                    self.rewardedAd?.present(fromRootViewController: self, userDidEarnRewardHandler: self.getReward)
-                }
-    }
-    
-    func getReward(){
-        let reward = self.rewardedAd?.adReward
-        print("Reward received with currency \(String(describing: reward?.amount))")
-        if reward?.amount as! Int >= 1 {
-            let dayOfNextWeek = Date(timeIntervalSinceNow: 86400*10)
-            UserDefaults.standard.set(dayOfNextWeek, forKey: "adFreeUntil")
-            self.viewWillAppear(true)
-        }
-    }
-    
     func AdBannerSetting(){
         bannerView = GADBannerView(adSize: kGADAdSizeBanner)
         bannerView.delegate = self
         bannerView.adUnitID = bannerAdId
         bannerView.rootViewController = self
         bannerView.isAutoloadEnabled = true
+        
         addBannerViewToView(bannerView)
+        
         bannerView.isHidden = false
         addButtonBottomConstraint.constant = 65
         addButton.updateConstraints()
@@ -222,6 +184,54 @@ class ViewController: UIViewController, GADBannerViewDelegate, GADFullScreenCont
             bannerView.isHidden = true
             bannerView.removeFromSuperview()
             bannerView.delegate = nil
+        }
+    }
+    
+    @IBAction func adCloseBtn(_ sender: Any) {
+        let alert = UIAlertController(title: "배너 광고 제거", message: "동영상 광고를 시청하면 10일 동안 배너광고가 나타나지 않습니다.", preferredStyle: .alert)
+        let palyAction = UIAlertAction(title: "광고 시청", style: .default, handler: startRewardAd(_:))
+        let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+        alert.addAction(palyAction)
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func startRewardAd(_: UIAlertAction){
+        indicator.startAnimating()
+        var loadingSec = 0
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true){ _ in
+            loadingSec += 1
+            if loadingSec > 30 {
+                self.timer?.invalidate()
+                self.timer = nil
+                self.indicator.stopAnimating()
+            }
+        }
+        let request = GADRequest()
+        GADRewardedAd.load(withAdUnitID: rewardAdId,
+                           request: request) { (ad, error) in
+                    if let error = error {
+                        print("Rewarded ad failed to load with error: \(error.localizedDescription)")
+                        let alert = UIAlertController(title: "광고 로딩 실패", message: "광고를 불러오지 못했습니다. 다시 시도해주세요.", preferredStyle: .alert)
+                        let act = UIAlertAction(title: "확인", style: .cancel, handler: nil)
+                        alert.addAction(act)
+                        self.present(alert, animated: true, completion: nil)
+                        return
+                    }
+                    self.rewardedAd = ad
+                    self.rewardedAd?.fullScreenContentDelegate = self
+                    self.indicator.stopAnimating()
+                    self.rewardedAd?.present(fromRootViewController: self, userDidEarnRewardHandler: self.getReward)
+                }
+    }
+    
+    func getReward(){
+        let reward = self.rewardedAd?.adReward
+        print("Reward received with currency \(String(describing: reward?.amount))")
+        if reward?.amount as! Int >= 1 {
+            let adFreeDay = Date(timeIntervalSinceNow: 86400*10)
+            UserDefaults.standard.set(adFreeDay, forKey: "adFreeDay")
+            self.viewWillAppear(true)
         }
     }
     

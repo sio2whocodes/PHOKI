@@ -66,15 +66,15 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "adCell", for: indexPath) as? AdCell
             else { return UITableViewCell() }
             cell.label.text = menuList[indexPath.row]
-            if let adFreeDay = UserDefaults.standard.object(forKey: "adFreeUntil") as? Date {
+            if let adFreeDay = UserDefaults.standard.object(forKey: "adFreeDay") as? Date {
                 if adFreeDay < Date() {
                     cell.dayLabel.text = "광고 없음"
                 } else {
-//                    let ti = Int((adFreeDay.timeIntervalSince(Date()))/86400)
-                    cell.dayLabel.text = "광고 없음"
+                    let ti = Int((adFreeDay.timeIntervalSince(Date()))/86400+1)
+                    cell.dayLabel.text = "\(ti)일 남음"
                 }
             } else {
-                cell.dayLabel.text = "광고 없음"
+                cell.dayLabel.text = "광고 보기"
             }
             return cell
         } else if indexPath.row == 5 {
