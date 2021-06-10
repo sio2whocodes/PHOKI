@@ -68,7 +68,7 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
             cell.label.text = menuList[indexPath.row]
             if let adFreeDay = UserDefaults.standard.object(forKey: "adFreeDay") as? Date {
                 if adFreeDay < Date() {
-                    cell.dayLabel.text = "광고 없음"
+                    cell.dayLabel.text = "광고 보기"
                 } else {
                     let ti = Int((adFreeDay.timeIntervalSince(Date()))/86400+1)
                     cell.dayLabel.text = "\(ti)일 남음"
