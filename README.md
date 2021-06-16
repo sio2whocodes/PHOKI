@@ -10,5 +10,6 @@
 ### Ver. 1
 - 1.0: App Store release (2021.04.14)
 - 1.1: iPad version release, ad 수정 (2021.05.10)
+- 1.1.1: 광고 연결, 버그 수정 (2021.06.15)
 
 ###### this page will be updated very sooon ;)
