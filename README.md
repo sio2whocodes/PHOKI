@@ -5,7 +5,15 @@
 ## What is PHOKI
 매일매일 기록하고 싶은 사진을 캘린더에서 모아볼 수 있는 어플   
 아카이빙, 성취 인증, 목표 달성 체크 용도로 사용할 수 있습니다 🌏
-   
+
+## Screen shots
+<div>
+<img src = "https://user-images.githubusercontent.com/41771874/131452440-9d270284-ab2d-4425-b687-6779031f4ecf.png" width = 22% >
+<img src = "https://user-images.githubusercontent.com/41771874/131452453-edd9b202-b3e5-40bb-973c-6e26a2ea9372.png" width = 22% >
+<img src = "https://user-images.githubusercontent.com/41771874/131452459-05e0ccbb-3c62-4065-a8a7-e63bbafbdf5b.png" width = 22% >
+<img src = "https://user-images.githubusercontent.com/41771874/131452465-23e7a889-c50f-45bb-95f2-761b42a39ace.png" width = 22% >
+</div>
+
 ## Version
 ### Ver. 1
 - 1.0: App Store release (2021.04.14)
