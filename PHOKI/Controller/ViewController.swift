@@ -12,7 +12,7 @@ import NVActivityIndicatorView
 
 var thumnails = [String:UIImage]()
 var calendarInfoList = [CalendarInfoInstance]()
-var currentCalendarIndex = 0
+var currentCalendarIndex: Int = 0
 
 class ViewController: UIViewController, GADBannerViewDelegate, GADFullScreenContentDelegate {
     @IBOutlet weak var monthLabel: UILabel!
@@ -44,6 +44,7 @@ class ViewController: UIViewController, GADBannerViewDelegate, GADFullScreenCont
     var yymm = ""
     var adPresent = false
     var timer: Timer?
+    var calendarIndex = currentCalendarIndex
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,7 +77,14 @@ class ViewController: UIViewController, GADBannerViewDelegate, GADFullScreenCont
         CalendarLabel.text = calendarInfoList[currentCalendarIndex].title
         titleImageView.image = UIImage(data: calendarInfoList[currentCalendarIndex].image!)
         contentHelper.fetchContents(calId: calendarInfoList[currentCalendarIndex].id)
-        collectionView.reloadData()
+        if calendarIndex != currentCalendarIndex {
+            calendarIndex = currentCalendarIndex
+            collectionViewReload()
+        }
+    }
+
+    func collectionViewReload(){
+        self.collectionView.reloadData()
     }
     
     func swipeSetting(){

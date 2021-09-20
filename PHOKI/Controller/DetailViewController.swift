@@ -54,7 +54,9 @@ class DetailViewController: UIViewController {
             myContent.thumnail = UIImage(data: myContent.images[0]!)!.getThumbnail()!
             contentHelper.updateContent(mycontent: myContent)
         }
-        presentingViewController?.children[0].viewWillAppear(true)
+        let vc = presentingViewController?.children[0] as? ViewController
+        vc?.viewWillAppear(true)
+        vc?.collectionViewReload()
     }
     
     func makeDateLabel(){

@@ -52,13 +52,11 @@ class SettingViewController: UIViewController,
     
 }
 
-extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
+
+extension SettingViewController: UITableViewDelegate, UITableViewDataSource{
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return menuList.count
-    }
-    
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -76,22 +74,26 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
             } else {
                 cell.dayLabel.text = "광고 보기"
             }
+            cell.selectionStyle = .none
             return cell
         } else if indexPath.row == 5 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "licenseCell", for: indexPath) as? EtcCell
             else { return UITableViewCell() }
             cell.label.text = menuList[indexPath.row]
+            cell.selectionStyle = .none
             return cell
         } else if indexPath.row == 6 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "versionCell", for: indexPath) as? VerCell
             else { return UITableViewCell() }
             cell.label.text = menuList[indexPath.row]
             cell.verNum.text = version
+            cell.selectionStyle = .none
             return cell
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "etcCell", for: indexPath) as? EtcCell
             else { return UITableViewCell() }
             cell.label.text = menuList[indexPath.row]
+            cell.selectionStyle = .none
             return cell
         }
     }
@@ -201,7 +203,7 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
             }
         }
     }
-    
+        
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return CGFloat(0)
     }
@@ -212,6 +214,8 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
         return headerView
     }
 }
+
+
 
 
 class EtcCell: UITableViewCell {
