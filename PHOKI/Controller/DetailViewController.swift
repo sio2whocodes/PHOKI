@@ -138,10 +138,14 @@ extension DetailViewController: UICollectionViewDataSource {
         }
         cell.memolabel.clipsToBounds = true
         cell.memolabel.layer.cornerRadius = 8
+        
         cell.imgView.image = UIImage(data: myContent.images[indexPath.item]!)
         cell.imgView.layer.cornerRadius = 10
+        
         cell.memoTextView.text = myContent.memos[indexPath.item]
         cell.memoTextView.tag = indexPath.item
+        cell.memoTextView.addDoneButtonOnKeyBoard()
+        
         cell.button.tag = indexPath.item
         cell.button.addTarget(self, action: #selector(imgbtnClick(sender:)), for: .touchUpInside)
         return cell
@@ -260,9 +264,6 @@ extension DetailViewController: UIImagePickerControllerDelegate, UINavigationCon
 extension DetailViewController: UITextViewDelegate {
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        if text == "\n" {
-            textView.resignFirstResponder()
-        }
         guard let str = textView.text else { return true }
         let newLength = str.count + text.count - range.length
         return newLength <= 300
@@ -270,7 +271,7 @@ extension DetailViewController: UITextViewDelegate {
     
     
     @objc func keyBoardWillShow(_ sender: Notification){
-        self.view.frame.origin.y = -150
+        self.view.frame.origin.y = -250
     }
     
     @objc func keyBoardWillHide(_ sender: Notification){
@@ -290,9 +291,28 @@ extension DetailViewController: UITextViewDelegate {
     }
 }
 
+extension UITextView {
+    func addDoneButtonOnKeyBoard(){
+        let doneToolBar: UIToolbar = UIToolbar(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 40))
+        doneToolBar.barStyle = .default
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let done = UIBarButtonItem(title: "완료", style: .done, target: nil, action: #selector(self.doneButtonAction))
+        let items = [flexSpace, done]
+        doneToolBar.items = items
+        doneToolBar.sizeToFit()
+        
+        self.inputAccessoryView = doneToolBar
+    }
+    
+    @objc func doneButtonAction(){
+        self.resignFirstResponder()
+    }
+}
+
 class ImageCell: UICollectionViewCell {
     @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var memoTextView: UITextView!
     @IBOutlet weak var button: UIButton!
     @IBOutlet weak var memolabel: UILabel!
 }
+
