@@ -19,5 +19,7 @@
 - 1.0: App Store release (2021.04.14)
 - 1.1: iPad version release, ad 수정 (2021.05.10)
 - 1.1.1: 광고 연결, 버그 수정 (2021.06.15)
+- 1.1.2: collection view shuffle 문제 수정 (2021.09.20)
+- 1.1.3: 메모 줄바꿈 기능 수정 (2021.09.21)
 
 ###### this page will be updated very sooon ;)
