@@ -139,7 +139,15 @@ extension CalendarListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath) {
         currentCalendarIndex = indexPath.item
+        
+        //캘린더 선택시 현재 날짜의 캘린더 표시
+        let vc = tabBarController?.children[0] as? ViewController
+        vc?.selectedDate = Date()
+        vc?.setMonthView()
+        
+        //사진 배열 초기화 - 캘린더 변경
         thumnails.removeAll()
+        
         tabBarController?.selectedIndex = 0
     }
 }

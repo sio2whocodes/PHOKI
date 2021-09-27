@@ -54,7 +54,8 @@ class ViewController: UIViewController, GADBannerViewDelegate, GADFullScreenCont
         uisetting()
         addButtonShadow()
         setIndicator()
-        setMonthView(date: Date())
+        selectedDate = Date()
+        setMonthView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -77,10 +78,6 @@ class ViewController: UIViewController, GADBannerViewDelegate, GADFullScreenCont
         CalendarLabel.text = calendarInfoList[currentCalendarIndex].title
         titleImageView.image = UIImage(data: calendarInfoList[currentCalendarIndex].image!)
         contentHelper.fetchContents(calId: calendarInfoList[currentCalendarIndex].id)
-        if calendarIndex != currentCalendarIndex {
-            calendarIndex = currentCalendarIndex
-            collectionViewReload()
-        }
     }
 
     func collectionViewReload(){
@@ -112,7 +109,7 @@ class ViewController: UIViewController, GADBannerViewDelegate, GADFullScreenCont
             }
             selectedDate = calendarHelper.previousMonth(date: selectedDate)
         }
-        setMonthView(date: selectedDate)
+        setMonthView()
     }
     
     func uisetting(){
@@ -251,7 +248,7 @@ class ViewController: UIViewController, GADBannerViewDelegate, GADFullScreenCont
         self.view.addSubview(indicator)
     }
     
-    func setMonthView(date: Date) {
+    func setMonthView() {
         totalDates.removeAll()
         let datesInMonth = calendarHelper.numOfDatesInMonth(date: selectedDate)
         let firstDayOfMonth = calendarHelper.firstDayOfMonth(date: selectedDate)
@@ -275,12 +272,12 @@ class ViewController: UIViewController, GADBannerViewDelegate, GADFullScreenCont
     
     @IBAction func previousMonth(_ sender: Any) {
         selectedDate = calendarHelper.previousMonth(date: selectedDate)
-        setMonthView(date: selectedDate)
+        setMonthView()
     }
     
     @IBAction func nextMonth(_ sender: Any) {
         selectedDate = calendarHelper.nextMonth(date: selectedDate)
-        setMonthView(date: selectedDate)
+        setMonthView()
     }
     
     @IBAction func addBtn(_ sender: Any) {
