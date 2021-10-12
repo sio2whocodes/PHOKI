@@ -1,4 +1,4 @@
-# PHOKI <img src="https://github.com/sio2whocodes/PHOKI/blob/main/PHOKI/img/phoki_icon_%EB%91%A5%EA%B8%80_%EB%8C%80%EC%A7%80%201.png" width = 45 align = right>
+# PHOKI <img src="https://github.com/sio2whocodes/PHOKI/blob/main/PHOKI/img/phoki_icon_%EB%91%A5%EA%B8%80_%EB%8C%80%EC%A7%80%201.png" width = 105 align = left>
 [<img src = "https://devimages-cdn.apple.com/app-store/marketing/guidelines/images/badge-download-on-the-app-store.svg">](https://apps.apple.com/us/app/%ED%8F%AC%ED%82%A4/id1562617132#?platform=iphone)    
 
 > iOS 개인 프로젝트 : 포토 캘린더
@@ -13,6 +13,58 @@
 <img src = "https://user-images.githubusercontent.com/41771874/131452459-05e0ccbb-3c62-4065-a8a7-e63bbafbdf5b.png" width = 22% >
 <img src = "https://user-images.githubusercontent.com/41771874/131452465-23e7a889-c50f-45bb-95f2-761b42a39ace.png" width = 22% >
 </div>
+
+## Project
+- 프로젝트 기간: 2021.2.10 ~ 2021.04.14
+- 앱스토어 출시: 2021.04.14
+- 개인 프로젝트
+
+## Develop Environment
+![SWIFT](https://img.shields.io/static/v1?style=for-the-badge&logo=swift&message=SWIFT&label=&color=FA7343&labelColor=000000)
+
+iOS Deployment Target : iOS 14.4
+
+## Library
+- [NVActivityIndicatorView](https://github.com/ninjaprox/NVActivityIndicatorView)
+
+## Features
+| 기능 | 구현 |   
+| - | - |   
+| 포토 캘린더 뷰 | ✅ |
+| 오늘 사진 추가 | ✅ |
+| 하루 사진 여러장 추가 | ✅ |
+| 사진 추가, 변경, 삭제 | ✅ |
+| 사진 순서 변경 | ✅ |
+| 사진 메모 | ✅ |
+| 여러개 캘린더 | ✅ |
+| 캘린더 배경사진, 이름 변경 | ✅ |
+| 캘린더 추가, 삭제 | ✅ |
+| 캘린더 추가, 삭제 | ✅ |
+| 아이클라우드 백업, 복원 기능 | ✅ |
+
+## Structure
+```
+.
+   ├── Main.storyboard
+├─ Cell
+   ├── calendarCell.swift
+   ├── calendarInfoCell.swift
+├─ Model
+   ├── CalendarInfoInstance.swift
+   ├── MyContent.swift
+├─ Cotroller
+   ├── ViewController.swift
+   ├── DetailViewController.swift
+   ├── CalendarListViewController.swift
+   ├── SettingViewController.swift
+   ├── AdViewController.swift
+   ├── SettingViewController.swift
+├─ Helper
+   ├── CalendarHelper.swift
+   ├── ContentHelper.swift
+   └── CalendarInfoHelper.swift
+```
+
 
 ## Version
 ### Ver. 1
