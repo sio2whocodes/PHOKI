@@ -1,4 +1,4 @@
-# PHOKI <img src="https://github.com/sio2whocodes/PHOKI/blob/main/PHOKI/img/phoki_icon_%EB%91%A5%EA%B8%80_%EB%8C%80%EC%A7%80%201.png" width = 105 align = left>
+# PHOKI <img src="https://user-images.githubusercontent.com/41771874/136984840-735d5ebe-3080-4b47-af7e-78f8c6870b06.png" width = 105 align = left>
 [<img src = "https://devimages-cdn.apple.com/app-store/marketing/guidelines/images/badge-download-on-the-app-store.svg">](https://apps.apple.com/us/app/%ED%8F%AC%ED%82%A4/id1562617132#?platform=iphone)    
 
 > iOS 개인 프로젝트 : 포토 캘린더
@@ -38,7 +38,6 @@ iOS Deployment Target : iOS 14.4
 | 사진 메모 | ✅ |
 | 여러개 캘린더 | ✅ |
 | 캘린더 배경사진, 이름 변경 | ✅ |
-| 캘린더 추가, 삭제 | ✅ |
 | 캘린더 추가, 삭제 | ✅ |
 | 아이클라우드 백업, 복원 기능 | ✅ |
 
