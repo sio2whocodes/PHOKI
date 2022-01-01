@@ -155,7 +155,7 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource{
             let icloudURL = fileManager.url(forUbiquityContainerIdentifier: nil)?.appendingPathComponent("Documents").appendingPathComponent("Data")
             do {
                try appDelegate.persistentContainer.copyPersistentStores(to: icloudURL!, overwriting: true)
-                self.indicator.stopAnimating()
+               self.indicator.stopAnimating()
                let alert = UIAlertController(title: "백업 완료", message: "PHOKI 데이터 백업이 완료되었습니다🎉", preferredStyle: .alert)
                let action = UIAlertAction(title: "확인", style: .default, handler: nil)
                alert.addAction(action)
@@ -166,7 +166,7 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource{
                let alert = UIAlertController(title: "백업 실패", message: "PHOKI 데이터 백업이 진행되지 않았습니다. 다시 시도해주세요😥", preferredStyle: .alert)
                let action = UIAlertAction(title: "확인", style: .default, handler: nil)
                alert.addAction(action)
-                self.present(alert, animated: true, completion: nil)
+               self.present(alert, animated: true, completion: nil)
             }
         }
     }

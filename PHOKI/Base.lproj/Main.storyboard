@@ -398,7 +398,7 @@
                                 </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="BVx-jo-5IA">
-                                <rect key="frame" x="0.0" y="79.5" width="414" height="728.5"/>
+                                <rect key="frame" x="0.0" y="79.5" width="414" height="698.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="me4-r6-6q1">
                                     <size key="itemSize" width="380" height="700"/>
@@ -408,7 +408,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="detailcell" id="mF1-GS-dI5" customClass="ImageCell" customModule="PHOKI" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="14.5" width="380" height="700"/>
+                                        <rect key="frame" x="0.0" y="-1" width="380" height="700"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="aQc-E6-hOn">
                                             <rect key="frame" x="0.0" y="0.0" width="380" height="700"/>
@@ -503,11 +503,15 @@
                                 <color key="textColor" red="0.66422420739999999" green="0.66424006219999998" blue="0.66423153879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="cul-oa-YAz">
+                                <rect key="frame" x="146" y="778" width="122" height="28"/>
+                            </pageControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="cqf-CM-NIX"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="cqf-CM-NIX" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="tbM-Xl-j1H" secondAttribute="trailing" symbolic="YES" id="0vO-sz-MhV"/>
+                            <constraint firstItem="cul-oa-YAz" firstAttribute="top" secondItem="BVx-jo-5IA" secondAttribute="bottom" id="2cY-4A-5hj"/>
                             <constraint firstItem="cqf-CM-NIX" firstAttribute="trailing" secondItem="biI-T9-az1" secondAttribute="trailing" constant="20" id="6EO-pU-QSU"/>
                             <constraint firstItem="BVx-jo-5IA" firstAttribute="leading" secondItem="cqf-CM-NIX" secondAttribute="leading" id="6cM-rO-qs5"/>
                             <constraint firstItem="BVx-jo-5IA" firstAttribute="top" secondItem="tbM-Xl-j1H" secondAttribute="bottom" constant="5" id="EuE-L6-RjR"/>
@@ -519,7 +523,8 @@
                             <constraint firstItem="cqf-CM-NIX" firstAttribute="trailing" secondItem="Y7J-jY-AdI" secondAttribute="trailing" constant="20" id="UDS-da-VTO"/>
                             <constraint firstItem="aJb-o6-TQP" firstAttribute="top" secondItem="cqf-CM-NIX" secondAttribute="top" constant="20" id="YAw-7h-3n3"/>
                             <constraint firstItem="biI-T9-az1" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="aJb-o6-TQP" secondAttribute="trailing" constant="8" symbolic="YES" id="hKp-of-gDQ"/>
-                            <constraint firstItem="cqf-CM-NIX" firstAttribute="bottom" secondItem="BVx-jo-5IA" secondAttribute="bottom" id="jNA-la-Fkd"/>
+                            <constraint firstItem="cqf-CM-NIX" firstAttribute="bottom" secondItem="cul-oa-YAz" secondAttribute="bottom" constant="2" id="wGS-ya-QG6"/>
+                            <constraint firstItem="cul-oa-YAz" firstAttribute="centerX" secondItem="cqf-CM-NIX" secondAttribute="centerX" id="wPY-XM-oh6"/>
                             <constraint firstItem="cqf-CM-NIX" firstAttribute="bottom" secondItem="Y7J-jY-AdI" secondAttribute="bottom" constant="20" id="yoC-7Z-33N"/>
                         </constraints>
                     </view>
@@ -528,6 +533,7 @@
                         <outlet property="collectionView" destination="BVx-jo-5IA" id="bh5-bp-g9Q"/>
                         <outlet property="dateLabel" destination="tbM-Xl-j1H" id="RUh-Pz-ABh"/>
                         <outlet property="detailView" destination="LlE-fy-bBP" id="whA-fO-CfK"/>
+                        <outlet property="pager" destination="cul-oa-YAz" id="sTE-Z4-03v"/>
                         <outlet property="yearLabel" destination="aJb-o6-TQP" id="7fN-x1-PeZ"/>
                     </connections>
                 </viewController>

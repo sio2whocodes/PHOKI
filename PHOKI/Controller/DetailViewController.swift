@@ -15,6 +15,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var yearLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var addButton: UIButton!
+    @IBOutlet weak var pager: UIPageControl!
     
     let picker = UIImagePickerController()
     let contentHelper = ContentHelper()
@@ -80,6 +81,8 @@ class DetailViewController: UIViewController {
         let gesture = UILongPressGestureRecognizer(target: self,
                                                    action: #selector(handleLongPressGesture(_:)))
         collectionView.addGestureRecognizer(gesture)
+        
+        //TO DO : 위치 이동
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(keyBoardWillShow(_:)),
                                                name: UIResponder.keyboardWillShowNotification,
@@ -266,7 +269,7 @@ extension DetailViewController: UITextViewDelegate {
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         guard let str = textView.text else { return true }
         let newLength = str.count + text.count - range.length
-        return newLength <= 300
+        return newLength <= 1000
     }
     
     
