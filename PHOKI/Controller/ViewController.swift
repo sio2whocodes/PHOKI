@@ -142,7 +142,7 @@ class ViewController: UIViewController, GADBannerViewDelegate, GADFullScreenCont
     }
     
     func AdBannerSetting(){
-        bannerView = GADBannerView(adSize: kGADAdSizeBanner)
+        bannerView = GADBannerView(adSize: GADAdSizeBanner)
         bannerView.delegate = self
         bannerView.adUnitID = bannerAdId
         bannerView.rootViewController = self

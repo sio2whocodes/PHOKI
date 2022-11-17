@@ -17,7 +17,7 @@ class SettingViewController: UIViewController,
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var copyrightLabel: UILabel!
-    let menuList = ["앱 리뷰하기", "앱 피드백 보내기", "아이클라우드로 백업", "아이클라우드에서 복원","배너 광고 제거","라이선스","버전 정보"]
+    let menuList = ["앱 리뷰하기","앱 피드백 보내기","배너 광고 제거","라이선스","버전 정보"]
     let sec2 = ["라이선스","버전 정보"]
     let sec3 = ["광고"]
     let sections = ["PHOKI","about app", "광고"]
@@ -60,7 +60,7 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == 4 {
+        if indexPath.row == 2 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "adCell", for: indexPath) as? AdCell
             else { return UITableViewCell() }
             cell.label.text = menuList[indexPath.row]
@@ -76,13 +76,13 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource{
             }
             cell.selectionStyle = .none
             return cell
-        } else if indexPath.row == 5 {
+        } else if indexPath.row == 3 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "licenseCell", for: indexPath) as? EtcCell
             else { return UITableViewCell() }
             cell.label.text = menuList[indexPath.row]
             cell.selectionStyle = .none
             return cell
-        } else if indexPath.row == 6 {
+        } else if indexPath.row == 4 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "versionCell", for: indexPath) as? VerCell
             else { return UITableViewCell() }
             cell.label.text = menuList[indexPath.row]
@@ -118,22 +118,22 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource{
                     compseVC.setMessageBody("\n\n---------\nmy app version : \(String(version!))", isHTML: false)
                     self.present(compseVC, animated: true, completion: nil)
                 }
-            //백업
-            case 2:
-                let alert = UIAlertController(title: "데이터를 백업하시겠습니까?", message: "백업된 데이터는 아이클라우드에 저장됩니다", preferredStyle: .alert)
-                let copyAction = UIAlertAction(title: "예", style: .default, handler: copyData(_:))
-                let cancelAction = UIAlertAction(title: "아니오", style: .cancel, handler: nil)
-                alert.addAction(copyAction)
-                alert.addAction(cancelAction)
-                present(alert, animated: true, completion: nil)
-            //복원
-            case 3:
-                let alert = UIAlertController(title: "데이터를 복원하시겠습니까?", message: "아이클라우드에 저장된 데이터로 복원됩니다", preferredStyle: .alert)
-                let restoreAction = UIAlertAction(title: "예", style: .default, handler: restoreData(_:))
-                let cancelAction = UIAlertAction(title: "아니오", style: .cancel, handler: nil)
-                alert.addAction(restoreAction)
-                alert.addAction(cancelAction)
-                present(alert, animated: true, completion: nil)
+//            //백업
+//            case 2:
+//                let alert = UIAlertController(title: "데이터를 백업하시겠습니까?", message: "백업된 데이터는 아이클라우드에 저장됩니다", preferredStyle: .alert)
+//                let copyAction = UIAlertAction(title: "예", style: .default, handler: copyData(_:))
+//                let cancelAction = UIAlertAction(title: "아니오", style: .cancel, handler: nil)
+//                alert.addAction(copyAction)
+//                alert.addAction(cancelAction)
+//                present(alert, animated: true, completion: nil)
+//            //복원
+//            case 3:
+//                let alert = UIAlertController(title: "데이터를 복원하시겠습니까?", message: "아이클라우드에 저장된 데이터로 복원됩니다", preferredStyle: .alert)
+//                let restoreAction = UIAlertAction(title: "예", style: .default, handler: restoreData(_:))
+//                let cancelAction = UIAlertAction(title: "아니오", style: .cancel, handler: nil)
+//                alert.addAction(restoreAction)
+//                alert.addAction(cancelAction)
+//                present(alert, animated: true, completion: nil)
             default:
                 print()
         }
