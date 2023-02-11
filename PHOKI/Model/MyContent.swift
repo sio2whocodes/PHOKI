@@ -8,7 +8,7 @@
 import UIKit
 
 struct MyContent {
-    var date: String
+    var date: String //ex. 2022091
     var images: [Data?]
     var memos: [String?]
     var thumnail: UIImage

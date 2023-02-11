@@ -17,7 +17,7 @@ class SettingViewController: UIViewController,
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var copyrightLabel: UILabel!
-    let menuList = ["앱 리뷰하기","앱 피드백 보내기","배너 광고 제거","라이선스","버전 정보"]
+    let menuList = ["앱 리뷰하기".localized,"앱 피드백 보내기".localized,"배너 광고 제거".localized,"라이선스".localized,"버전 정보".localized]
     let sec2 = ["라이선스","버전 정보"]
     let sec3 = ["광고"]
     let sections = ["PHOKI","about app", "광고"]
@@ -66,13 +66,14 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource{
             cell.label.text = menuList[indexPath.row]
             if let adFreeDay = UserDefaults.standard.object(forKey: "adFreeDay") as? Date {
                 if adFreeDay < Date() {
-                    cell.dayLabel.text = "광고 보기"
+                    cell.dayLabel.text = "광고 보기".localized
+                    
                 } else {
                     let ti = Int((adFreeDay.timeIntervalSince(Date()))/86400+1)
-                    cell.dayLabel.text = "\(ti)일 남음"
+                    cell.dayLabel.text = "\(ti)"+"일 남음".localized
                 }
             } else {
-                cell.dayLabel.text = "광고 보기"
+                cell.dayLabel.text = "광고 보기".localized
             }
             cell.selectionStyle = .none
             return cell

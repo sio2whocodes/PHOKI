@@ -38,9 +38,9 @@ class CalendarListViewController: UIViewController {
     }
     
     @IBAction func addButton(_ sender: Any) {
-        let alert = UIAlertController(title: "캘린더 추가", message: "캘린더 이름을 입력해주세요", preferredStyle: .alert)
-        let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
-        let save = UIAlertAction(title: "완료", style: .default){ (save) in
+        let alert = UIAlertController(title: "캘린더 추가".localized, message: "캘린더 이름을 입력해주세요".localized, preferredStyle: .alert)
+        let cancel = UIAlertAction(title: "취소".localized, style: .cancel, handler: nil)
+        let save = UIAlertAction(title: "완료".localized, style: .default){ (save) in
             let title = alert.textFields?[0].text
             let index = self.calendarInfoList.last!.index+1
             let calendarInfo = CalendarInfoInstance(title: title!, image: (UIImage(named: "bluecloud")?.jpegData(compressionQuality: 0.5))!, id: "\(index)", index: index)
@@ -49,7 +49,7 @@ class CalendarListViewController: UIViewController {
             self.collectionView.reloadData()
         }
         alert.addTextField{ (textField) in
-            textField.placeholder = "캘린더 이름"
+            textField.placeholder = "캘린더 이름".localized
         }
         alert.addAction(cancel)
         alert.addAction(save)
@@ -76,9 +76,9 @@ extension CalendarListViewController: UICollectionViewDataSource {
         
         cell.menuButton.showsMenuAsPrimaryAction = true
         //캘린더 이름 변경
-        let editTitle = UIAction(title: "캘린더 이름 변경", image: UIImage(systemName: "pencil"), handler: {(editTitle) in
-            let alert = UIAlertController(title: "캘린더 이름 변경", message: "변경할 캘린더 이름을 입력하세요", preferredStyle: .alert)
-            let save = UIAlertAction(title: "완료", style: .default, handler: { _ in
+        let editTitle = UIAction(title: "캘린더 이름 변경".localized, image: UIImage(systemName: "pencil"), handler: {(editTitle) in
+            let alert = UIAlertController(title: "캘린더 이름 변경".localized, message: "변경할 캘린더 이름을 입력하세요".localized, preferredStyle: .alert)
+            let save = UIAlertAction(title: "완료".localized, style: .default, handler: { _ in
                 self.calendarInfoList[indexPath.item].title = (alert.textFields?[0].text)!
                 self.calendarInfoHelper.updateCalendarInfo(calInst: self.calendarInfoList[indexPath.item])
                 self.collectionView.reloadData()
@@ -90,33 +90,33 @@ extension CalendarListViewController: UICollectionViewDataSource {
             self.present(alert, animated: true, completion: nil)
         })
         //캘린더 대표 사진 변경
-        let editImage = UIAction(title: "대표 사진 변경", image: UIImage(systemName: "photo"), handler: {_ in
+        let editImage = UIAction(title: "대표 사진 변경".localized, image: UIImage(systemName: "photo"), handler: {_ in
             self.editIndex = indexPath.item
             self.present(self.picker, animated: true, completion: nil)
         })
         //캘린더 삭제
-        let delete = UIAction(title: "캘린더 삭제", image: UIImage(systemName: "trash"), handler: {_ in
+        let delete = UIAction(title: "캘린더 삭제".localized, image: UIImage(systemName: "trash"), handler: {_ in
             if self.calendarInfoList.count == 1 {
-                let alertToOnlyOne = UIAlertController(title: "캘린더가 1개일 땐\n삭제할 수 없습니다.", message: "새로운 캘린더를 추가한 후에 삭제해주세요.", preferredStyle: .alert)
-                let ok = UIAlertAction(title: "확인", style: .default, handler: nil)
+                let alertToOnlyOne = UIAlertController(title: "캘린더가 1개일 땐\n삭제할 수 없습니다.".localized, message: "새로운 캘린더를 추가한 후에 삭제해주세요.".localized, preferredStyle: .alert)
+                let ok = UIAlertAction(title: "확인".localized, style: .default, handler: nil)
                 alertToOnlyOne.addAction(ok)
                 self.present(alertToOnlyOne, animated: true, completion: nil)
             } else {
-                let alert = UIAlertController(title: "캘린더 삭제", message: "'\(self.calendarInfoList[indexPath.item].title)' 캘린더를 삭제하시겠습니까?", preferredStyle: .alert)
-                let delete = UIAlertAction(title: "삭제", style: .destructive, handler: {_ in
+                let alert = UIAlertController(title: "캘린더 삭제".localized, message: "'\(self.calendarInfoList[indexPath.item].title)' " + "캘린더를 삭제하시겠습니까?".localized, preferredStyle: .alert)
+                let delete = UIAlertAction(title: "삭제".localized, style: .destructive, handler: {_ in
                     self.calendarInfoHelper.deleteCalendar(calInst: self.calendarInfoList.remove(at: indexPath.item))
                     if indexPath.item == currentCalendarIndex {
                         currentCalendarIndex = (indexPath.item-1) % self.calendarInfoList.count
                     }
                     self.collectionView.reloadData()
                 })
-                let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+                let cancel = UIAlertAction(title: "취소".localized, style: .cancel, handler: nil)
                 alert.addAction(delete)
                 alert.addAction(cancel)
                 self.present(alert, animated: true, completion: nil)
             }
         })
-        let cancel = UIAction(title: "취소", attributes: .destructive, handler: { _ in } )
+        let cancel = UIAction(title: "취소".localized, attributes: .destructive, handler: { _ in } )
         cell.menuButton.menu = UIMenu(title: "", image: UIImage(systemName: "heart.fill"), identifier: nil, options: .displayInline, children: [editTitle, editImage, delete, cancel])
 
         return cell

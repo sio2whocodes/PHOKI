@@ -26,7 +26,7 @@ class AdViewController: UIViewController, GADFullScreenContentDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         setIndicator()
-        label.text = "동영상 광고를 시청하면\n10일 동안 배너광고가 나타나지 않습니다.\n광고 시청은 앱을 무료로 운영하는 데에\n도움이 됩니다."
+        label.text = "동영상 광고를 시청하면\n10일 동안 배너광고가 나타나지 않습니다.\n광고 시청은 앱을 무료로 운영하는 데에\n도움이 됩니다.".localized
         adButton.isHidden = true
         subLabel.text = ""
     }
@@ -35,7 +35,7 @@ class AdViewController: UIViewController, GADFullScreenContentDelegate {
         if let adFreeDay = UserDefaults.standard.object(forKey: "adFreeDay") as? Date {
             if Date() <= adFreeDay {
                 let ti = Int((adFreeDay.timeIntervalSince(Date()))/86400+1)
-                subLabel.text = "\(ti)일 동안 배너 광고가 나타나지 않습니다."
+                subLabel.text = "\(ti)"+"일 동안 배너 광고가 나타나지 않습니다.".localized
                 adButton.isHidden = true
             } else {
                 subLabel.isHidden = true
@@ -74,8 +74,8 @@ class AdViewController: UIViewController, GADFullScreenContentDelegate {
                            request: request) { (ad, error) in
                   if let error = error {
                       print("Rewarded ad failed to load with error: \(error.localizedDescription)")
-                    let alert = UIAlertController(title: "광고 로딩 실패", message: "광고를 불러오지 못했습니다\n다시 시도해 주세요", preferredStyle: .alert)
-                    let act = UIAlertAction(title: "확인", style: .cancel, handler: nil)
+                      let alert = UIAlertController(title: "광고 로딩 실패".localized, message: "광고를 불러오지 못했습니다\n다시 시도해 주세요".localized, preferredStyle: .alert)
+                      let act = UIAlertAction(title: "확인".localized, style: .cancel, handler: nil)
                     alert.addAction(act)
                     self.present(alert, animated: true, completion: nil)
                       return

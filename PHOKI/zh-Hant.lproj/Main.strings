@@ -1,0 +1,84 @@
+
+/* Class = "UILabel"; text = "수"; ObjectID = "5ak-F5-i2Q"; */
+"5ak-F5-i2Q.text" = "三";
+
+/* Class = "UILabel"; text = "목"; ObjectID = "6dD-C8-g53"; */
+"6dD-C8-g53.text" = "四";
+
+/* Class = "UITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."; ObjectID = "86q-GU-a4o"; */
+"86q-GU-a4o.text" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
+
+/* Class = "UILabel"; text = "동영상 광고를 시청하면 10일 동안 배너광고가 나타나지 않습니다. 광고 시청은 앱을 무료로 운영하는데에 도움이 됩니다 😊 감사합니다 🥰.       - PHOKI 개발자 - "; ObjectID = "E9N-py-cEs"; */
+"E9N-py-cEs.text" = "동영상 광고를 시청하면 10일 동안 배너광고가 나타나지 않습니다. 광고 시청은 앱을 무료로 운영하는데에 도움이 됩니다 😊 감사합니다 🥰.       - PHOKI 개발자 - ";
+
+/* Class = "UIViewController"; title = "DetailViewController"; ObjectID = "Emj-yk-E3M"; */
+"Emj-yk-E3M.title" = "DetailViewController";
+
+/* Class = "UINavigationController"; title = "PHOKI"; ObjectID = "GAZ-3a-guy"; */
+"GAZ-3a-guy.title" = "PHOKI";
+
+/* Class = "UILabel"; text = "MYCALENDAR"; ObjectID = "Hp0-g6-Xdm"; */
+"Hp0-g6-Xdm.text" = "MYCALENDAR";
+
+/* Class = "UILabel"; text = "버전 정보"; ObjectID = "Ian-bm-MLi"; */
+"Ian-bm-MLi.text" = "버전 정보";
+
+/* Class = "UILabel"; text = "일"; ObjectID = "JY3-gv-omJ"; */
+"JY3-gv-omJ.text" = "日";
+
+/* Class = "UILabel"; text = "1"; ObjectID = "LMh-Xi-fHh"; */
+"LMh-Xi-fHh.text" = "1";
+
+/* Class = "UILabel"; text = "1일 남음"; ObjectID = "MhC-XC-sza"; */
+"MhC-XC-sza.text" = "1일 남음";
+
+/* Class = "UILabel"; text = "MY CALENDAL"; ObjectID = "NVz-Yk-XgQ"; */
+"NVz-Yk-XgQ.text" = "MY CALENDAL";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Pdc-Eh-SFo"; */
+"Pdc-Eh-SFo.text" = "Label";
+
+/* Class = "UILabel"; text = "라이선스"; ObjectID = "Tb2-es-Kgn"; */
+"Tb2-es-Kgn.text" = "라이선스";
+
+/* Class = "UILabel"; text = "금"; ObjectID = "Zyd-M0-oSA"; */
+"Zyd-M0-oSA.text" = "五";
+
+/* Class = "UILabel"; text = "2021"; ObjectID = "aJb-o6-TQP"; */
+"aJb-o6-TQP.text" = "2021";
+
+/* Class = "UILabel"; text = "배너 광고 제거"; ObjectID = "cOr-RY-zss"; */
+"cOr-RY-zss.text" = "배너 광고 제거";
+
+/* Class = "UIButton"; normalTitle = "광고 보기"; ObjectID = "dFB-aR-rcR"; */
+"dFB-aR-rcR.normalTitle" = "查看广告";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "dYT-Gk-XQe"; */
+"dYT-Gk-XQe.text" = "Label";
+
+/* Class = "UILabel"; text = "토"; ObjectID = "s8F-VZ-7eM"; */
+"s8F-VZ-7eM.text" = "六";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "sFr-Hl-9ZH"; */
+"sFr-Hl-9ZH.text" = "Label";
+
+/* Class = "UILabel"; text = " memo📝 "; ObjectID = "sh0-4p-FOo"; */
+"sh0-4p-FOo.text" = " memo📝 ";
+
+/* Class = "UILabel"; text = "3월 27일 토"; ObjectID = "tbM-Xl-j1H"; */
+"tbM-Xl-j1H.text" = "3월 27일 토";
+
+/* Class = "UILabel"; text = "1.0"; ObjectID = "v2t-2w-zBE"; */
+"v2t-2w-zBE.text" = "1.0";
+
+/* Class = "UILabel"; text = "          ⓒ 2021 SU JEONG LIM"; ObjectID = "wfl-Xv-yEc"; */
+"wfl-Xv-yEc.text" = "          ⓒ 2021 SU JEONG LIM";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "xKG-8D-ryG"; */
+"xKG-8D-ryG.text" = "Label";
+
+/* Class = "UILabel"; text = "화"; ObjectID = "yYz-jb-hqh"; */
+"yYz-jb-hqh.text" = "二";
+
+/* Class = "UILabel"; text = "월"; ObjectID = "ztW-4u-yQh"; */
+"ztW-4u-yQh.text" = "一";

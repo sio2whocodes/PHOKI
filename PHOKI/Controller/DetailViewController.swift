@@ -37,7 +37,7 @@ class DetailViewController: UIViewController {
     var day = ""
     var idx = 0
     var isAdd = false
-    let dayList = ["일","월","화","수","목","금","토"]
+    let dayList = ["일요일","월요일","화요일","수요일","목요일","금요일","토요일"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,7 +67,10 @@ class DetailViewController: UIViewController {
         let dayInt = calendarHelper.weekDay(date: dateFormmater.date(from: yearMonth[yearMonth.startIndex..<yearIdx]+"-"+yearMonth[yearIdx..<yearMonth.endIndex]+"-"+self.date)!)
         day = dayList[dayInt]
         yearLabel.text = String(yearMonth[yearMonth.startIndex..<yearIdx])
-        dateLabel.text = calendarHelper.monthStringSingle(date: dateFormmater.date(from: yearMonth[yearMonth.startIndex..<yearIdx]+"-"+yearMonth[yearIdx..<yearMonth.endIndex]+"-"+self.date)!) + "월 " + self.date + "일 " + self.day
+        
+        //localization
+        let month = calendarHelper.monthStringSingle(date: dateFormmater.date(from: yearMonth[yearMonth.startIndex..<yearIdx]+"-"+yearMonth[yearIdx..<yearMonth.endIndex]+"-"+self.date)!) + "월"
+        dateLabel.text = month.localized + " " + self.date + "일".localized + ", " + self.day.localized
     }
     
     func setIndicator(){
@@ -158,17 +161,17 @@ extension DetailViewController: UICollectionViewDataSource {
         idx = sender.tag
         var alert: UIAlertController
         if UIDevice.current.userInterfaceIdiom == .pad {
-            alert = UIAlertController(title: "사진 수정", message: "", preferredStyle: .alert)
+            alert = UIAlertController(title: "사진 수정".localized, message: "", preferredStyle: .alert)
         } else {
-            alert = UIAlertController(title: "사진 수정", message: "", preferredStyle: .actionSheet)
+            alert = UIAlertController(title: "사진 수정".localized, message: "", preferredStyle: .actionSheet)
         }
-        let editAction = UIAlertAction(title: "사진 변경",
+        let editAction = UIAlertAction(title: "사진 변경".localized,
                                        style: .default,
                                        handler: updateImg(_:))
-        let deleteAction = UIAlertAction(title: "사진 삭제",
+        let deleteAction = UIAlertAction(title: "사진 삭제".localized,
                                          style: .destructive,
                                          handler: deleteImg(_:))
-        let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+        let cancel = UIAlertAction(title: "취소".localized, style: .cancel, handler: nil)
         alert.addAction(editAction)
         alert.addAction(deleteAction)
         alert.addAction(cancel)
@@ -299,7 +302,7 @@ extension UITextView {
         let doneToolBar: UIToolbar = UIToolbar(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 40))
         doneToolBar.barStyle = .default
         let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        let done = UIBarButtonItem(title: "완료", style: .done, target: nil, action: #selector(self.doneButtonAction))
+        let done = UIBarButtonItem(title: "완료".localized, style: .done, target: nil, action: #selector(self.doneButtonAction))
         let items = [flexSpace, done]
         doneToolBar.items = items
         doneToolBar.sizeToFit()

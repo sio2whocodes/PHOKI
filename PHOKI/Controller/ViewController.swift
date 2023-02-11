@@ -193,9 +193,9 @@ class ViewController: UIViewController, GADBannerViewDelegate, GADFullScreenCont
     }
     
     @IBAction func adCloseBtn(_ sender: Any) {
-        let alert = UIAlertController(title: "배너 광고 제거", message: "동영상 광고를 시청하면 10일 동안 배너광고가 나타나지 않습니다.", preferredStyle: .alert)
-        let palyAction = UIAlertAction(title: "광고 시청", style: .default, handler: startRewardAd(_:))
-        let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+        let alert = UIAlertController(title: "배너 광고 제거".localized, message: "동영상 광고를 시청하면 10일 동안 배너광고가 나타나지 않습니다.".localized, preferredStyle: .alert)
+        let palyAction = UIAlertAction(title: "광고 시청".localized, style: .default, handler: startRewardAd(_:))
+        let cancelAction = UIAlertAction(title: "취소".localized, style: .cancel, handler: nil)
         alert.addAction(palyAction)
         alert.addAction(cancelAction)
         self.present(alert, animated: true, completion: nil)
@@ -217,8 +217,8 @@ class ViewController: UIViewController, GADBannerViewDelegate, GADFullScreenCont
                            request: request) { (ad, error) in
                     if let error = error {
                         print("Rewarded ad failed to load with error: \(error.localizedDescription)")
-                        let alert = UIAlertController(title: "광고 로딩 실패", message: "광고를 불러오지 못했습니다. 다시 시도해주세요.", preferredStyle: .alert)
-                        let act = UIAlertAction(title: "확인", style: .cancel, handler: nil)
+                        let alert = UIAlertController(title: "광고 로딩 실패".localized, message: "광고를 불러오지 못했습니다. 다시 시도해주세요.".localized, preferredStyle: .alert)
+                        let act = UIAlertAction(title: "확인".localized, style: .cancel, handler: nil)
                         alert.addAction(act)
                         self.present(alert, animated: true, completion: nil)
                         return
@@ -265,7 +265,8 @@ class ViewController: UIViewController, GADBannerViewDelegate, GADFullScreenCont
             count += 1
         }
  
-        monthLabel.text = calendarHelper.monthString(date: selectedDate) + "월 " + calendarHelper.yearString(date: selectedDate)
+        let monthLabelText: String = calendarHelper.monthString(date: selectedDate) + "월".localized
+        monthLabel.text = monthLabelText.localized + " " + calendarHelper.yearString(date: selectedDate)
         yymm = calendarHelper.yearString(date: selectedDate) + calendarHelper.monthString(date: selectedDate)
         self.collectionView.reloadData()
     }
