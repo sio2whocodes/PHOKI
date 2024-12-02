@@ -70,8 +70,11 @@ class ViewController: UIViewController, GADBannerViewDelegate, GADFullScreenCont
             removeBanner()
         }
         calendarInfoList = calendarInfoHelper.fetchCalendarInfoList()
+
         if calendarInfoList.count == 0 {
-            let cii = CalendarInfoInstance(title: "MY CALENDAR", image: (UIImage(named: "bluecloud")?.jpegData(compressionQuality: 1))!, id: "0", index: 0)
+            let uindex:String = calendarInfoHelper.getUniqueIndexOfCalendar()
+            let timestamp:Int64 = Int64(Date().timeIntervalSince1970)
+            let cii = CalendarInfoInstance(title: "MY CALENDAR", image: (UIImage(named: "bluecloud")?.jpegData(compressionQuality: 1))!, id: uindex, index: Int(timestamp))
             calendarInfoHelper.insertCalender(calInst: cii)
             calendarInfoList = calendarInfoHelper.fetchCalendarInfoList()
         }

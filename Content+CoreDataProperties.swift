@@ -9,7 +9,6 @@
 import Foundation
 import CoreData
 
-
 extension Content {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Content> {

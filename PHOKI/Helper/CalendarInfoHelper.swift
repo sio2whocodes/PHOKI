@@ -27,17 +27,17 @@ class CalendarInfoHelper {
         }
     }
     
-    func fetchCalendarInfo(calIdex: Int)->CalendarInfoInstance{
+    func fetchCalendarInfo(calIdex: String)->CalendarInfoInstance{
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "CalendarInfo")
-        fetchRequest.predicate = NSPredicate(format: "index == %@", calIdex)
-        var calendarInst: CalendarInfoInstance = CalendarInfoInstance(image: (UIImage(named: "bluecloud")?.jpegData(compressionQuality: 1))!, index: 0)
+        fetchRequest.predicate = NSPredicate(format: "id == %@", calIdex)
+        var calendarInst: CalendarInfoInstance = CalendarInfoInstance(image: (UIImage(named: "bluecloud")?.jpegData(compressionQuality: 1))!, index: Int(Date().timeIntervalSince1970))
         var calendarInfo = [CalendarInfo]()
         do {
             calendarInfo = try context.fetch(fetchRequest) as! [CalendarInfo]
         } catch {
             print(error.localizedDescription)
         }
-        calendarInst = CalendarInfoInstance(title: calendarInfo[0].title!, image: calendarInfo[0].image!, id: calendarInfo[0].id!, index: 0)
+        calendarInst = CalendarInfoInstance(title: calendarInfo[0].title!, image: calendarInfo[0].image!, id: calendarInfo[0].id!, index: Int(calendarInfo[0].index))
         return calendarInst
     }
     
@@ -97,5 +97,13 @@ class CalendarInfoHelper {
         } catch {
             print(error.localizedDescription)
         }
+    }
+    
+    func getUniqueIndexOfCalendar() -> String {
+        // unique idext 생성
+        let uuid:String = UserDefaults.standard.value(forKey: "uuid") as? String ?? "\(UUID())"
+        let timestamp:Int64 = Int64(Date().timeIntervalSince1970)
+        let uindex:String = "\(uuid)-\(timestamp)"
+        return uindex
     }
 }

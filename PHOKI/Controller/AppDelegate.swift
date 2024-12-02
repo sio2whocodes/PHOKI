@@ -16,6 +16,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         GADMobileAds.sharedInstance().start(completionHandler: nil)
+        
+        // 최초 실행 시 uuid 저장
+        if isFirstLaunching() {
+            setWhenFirstLaunching()
+        }
+        
         return true
     }
 
@@ -60,6 +66,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
         })
+        
+        container.viewContext.automaticallyMergesChangesFromParent = true
+        container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+        do {
+              try container.viewContext.setQueryGenerationFrom(.current)
+        } catch {
+             fatalError("Failed to pin viewContext to the current generation:\(error)")
+        }
+        
         return container
     }()
 
@@ -78,4 +93,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
+    
+    // MARK: - 최초 실행 확인
+    
+    func setWhenFirstLaunching() {
+        UserDefaults.standard.set("\(UUID())", forKey: "uuid")
+    }
+    
+    func isFirstLaunching() -> Bool {
+        if UserDefaults.standard.value(forKey: "uuid") == nil {
+            return true
+        } else {
+            return false
+        }
+    }
+
+    
 }
