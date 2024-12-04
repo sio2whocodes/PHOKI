@@ -119,92 +119,97 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource{
                     compseVC.setMessageBody("\n\n---------\nmy app version : \(String(version!))", isHTML: false)
                     self.present(compseVC, animated: true, completion: nil)
                 }
-//            //백업
-//            case 2:
-//                let alert = UIAlertController(title: "데이터를 백업하시겠습니까?", message: "백업된 데이터는 아이클라우드에 저장됩니다", preferredStyle: .alert)
-//                let copyAction = UIAlertAction(title: "예", style: .default, handler: copyData(_:))
-//                let cancelAction = UIAlertAction(title: "아니오", style: .cancel, handler: nil)
-//                alert.addAction(copyAction)
-//                alert.addAction(cancelAction)
-//                present(alert, animated: true, completion: nil)
-//            //복원
-//            case 3:
-//                let alert = UIAlertController(title: "데이터를 복원하시겠습니까?", message: "아이클라우드에 저장된 데이터로 복원됩니다", preferredStyle: .alert)
-//                let restoreAction = UIAlertAction(title: "예", style: .default, handler: restoreData(_:))
-//                let cancelAction = UIAlertAction(title: "아니오", style: .cancel, handler: nil)
-//                alert.addAction(restoreAction)
-//                alert.addAction(cancelAction)
-//                present(alert, animated: true, completion: nil)
+            /*
+            //백업
+            case 2:
+                let alert = UIAlertController(title: "데이터를 백업하시겠습니까?", message: "백업된 데이터는 아이클라우드에 저장됩니다", preferredStyle: .alert)
+                let copyAction = UIAlertAction(title: "예", style: .default, handler: copyData(_:))
+                let cancelAction = UIAlertAction(title: "아니오", style: .cancel, handler: nil)
+                alert.addAction(copyAction)
+                alert.addAction(cancelAction)
+                present(alert, animated: true, completion: nil)
+            //복원
+            case 3:
+                let alert = UIAlertController(title: "데이터를 복원하시겠습니까?", message: "아이클라우드에 저장된 데이터로 복원됩니다", preferredStyle: .alert)
+                let restoreAction = UIAlertAction(title: "예", style: .default, handler: restoreData(_:))
+                let cancelAction = UIAlertAction(title: "아니오", style: .cancel, handler: nil)
+                alert.addAction(restoreAction)
+                alert.addAction(cancelAction)
+                present(alert, animated: true, completion: nil)
+             [icloud 수동 백업/복원 주석 처리]
+             */
             default:
                 print()
         }
     }
     
-//    func copyData(_: UIAlertAction){
-//        indicator.startAnimating()
-//        var loadingSec = 0
-//        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true){ _ in
-//            loadingSec += 1
-//            if loadingSec > 30 {
-//                self.timer?.invalidate()
-//                self.timer = nil
-//                self.indicator.stopAnimating()
-//            }
-//        }
-//        DispatchQueue.main.async {
-//            let fileManager = FileManager.default
-//            let icloudURL = fileManager.url(forUbiquityContainerIdentifier: nil)?.appendingPathComponent("Documents").appendingPathComponent("Data")
-//            do {
-//               try appDelegate.persistentContainer.copyPersistentStores(to: icloudURL!, overwriting: true)
-//               self.indicator.stopAnimating()
-//               let alert = UIAlertController(title: "백업 완료", message: "PHOKI 데이터 백업이 완료되었습니다🎉", preferredStyle: .alert)
-//               let action = UIAlertAction(title: "확인", style: .default, handler: nil)
-//               alert.addAction(action)
-//               self.present(alert, animated: true, completion: nil)
-//            } catch {
-//               print(error)
-//               self.indicator.stopAnimating()
-//               let alert = UIAlertController(title: "백업 실패", message: "PHOKI 데이터 백업이 진행되지 않았습니다. 다시 시도해주세요😥", preferredStyle: .alert)
-//               let action = UIAlertAction(title: "확인", style: .default, handler: nil)
-//               alert.addAction(action)
-//               self.present(alert, animated: true, completion: nil)
-//            }
-//        }
-//    }
-//    
-//    func restoreData(_: UIAlertAction){
-//        indicator.startAnimating()
-//        var loadingSec = 0
-//        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true){ _ in
-//            loadingSec += 1
-//            if loadingSec > 30 {
-//                self.timer?.invalidate()
-//                self.timer = nil
-//                self.indicator.stopAnimating()
-//            }
-//        }
-//        DispatchQueue.main.async {
-//            let fileManager = FileManager.default
-//            let icloudURL = fileManager.url(forUbiquityContainerIdentifier: nil)?.appendingPathComponent("Documents").appendingPathComponent("Data")
-//            do {
-//                try appDelegate.persistentContainer.restorePersistentStore(from: icloudURL!)
-//                self.indicator.stopAnimating()
-//                let alert = UIAlertController(title: "복원 완료", message: "PHOKI 데이터 복원이 완료되었습니다🎉", preferredStyle: .alert)
-//                let action = UIAlertAction(title: "확인", style: .default, handler: nil)
-//                alert.addAction(action)
-//                self.present(alert, animated: true, completion: nil)
-//                thumnails.removeAll()
-//            } catch {
-//                print(error)
-//                self.indicator.stopAnimating()
-//                let alert = UIAlertController(title: "복원 실패", message: "PHOKI 데이터 복원이 진행되지 않았습니다. 다시 시도해주세요😥 \n 파일 앱 > iCloud Drive > PHOKI > Data 안의 파일들이 다운받아져 있는지 확인해주세요.", preferredStyle: .alert)
-//                let action = UIAlertAction(title: "확인", style: .default, handler: nil)
-//                alert.addAction(action)
-//                self.present(alert, animated: true, completion: nil)
-//            }
-//        }
-//    }
-        
+    /*
+    func copyData(_: UIAlertAction){
+        indicator.startAnimating()
+        var loadingSec = 0
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true){ _ in
+            loadingSec += 1
+            if loadingSec > 30 {
+                self.timer?.invalidate()
+                self.timer = nil
+                self.indicator.stopAnimating()
+            }
+        }
+        DispatchQueue.main.async {
+            let fileManager = FileManager.default
+            let icloudURL = fileManager.url(forUbiquityContainerIdentifier: nil)?.appendingPathComponent("Documents").appendingPathComponent("Data")
+            do {
+               try appDelegate.persistentContainer.copyPersistentStores(to: icloudURL!, overwriting: true)
+               self.indicator.stopAnimating()
+               let alert = UIAlertController(title: "백업 완료", message: "PHOKI 데이터 백업이 완료되었습니다🎉", preferredStyle: .alert)
+               let action = UIAlertAction(title: "확인", style: .default, handler: nil)
+               alert.addAction(action)
+               self.present(alert, animated: true, completion: nil)
+            } catch {
+               print(error)
+               self.indicator.stopAnimating()
+               let alert = UIAlertController(title: "백업 실패", message: "PHOKI 데이터 백업이 진행되지 않았습니다. 다시 시도해주세요😥", preferredStyle: .alert)
+               let action = UIAlertAction(title: "확인", style: .default, handler: nil)
+               alert.addAction(action)
+               self.present(alert, animated: true, completion: nil)
+            }
+        }
+    }
+    
+    func restoreData(_: UIAlertAction){
+        indicator.startAnimating()
+        var loadingSec = 0
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true){ _ in
+            loadingSec += 1
+            if loadingSec > 30 {
+                self.timer?.invalidate()
+                self.timer = nil
+                self.indicator.stopAnimating()
+            }
+        }
+        DispatchQueue.main.async {
+            let fileManager = FileManager.default
+            let icloudURL = fileManager.url(forUbiquityContainerIdentifier: nil)?.appendingPathComponent("Documents").appendingPathComponent("Data")
+            do {
+                try appDelegate.persistentContainer.restorePersistentStore(from: icloudURL!)
+                self.indicator.stopAnimating()
+                let alert = UIAlertController(title: "복원 완료", message: "PHOKI 데이터 복원이 완료되었습니다🎉", preferredStyle: .alert)
+                let action = UIAlertAction(title: "확인", style: .default, handler: nil)
+                alert.addAction(action)
+                self.present(alert, animated: true, completion: nil)
+                thumnails.removeAll()
+            } catch {
+                print(error)
+                self.indicator.stopAnimating()
+                let alert = UIAlertController(title: "복원 실패", message: "PHOKI 데이터 복원이 진행되지 않았습니다. 다시 시도해주세요😥 \n 파일 앱 > iCloud Drive > PHOKI > Data 안의 파일들이 다운받아져 있는지 확인해주세요.", preferredStyle: .alert)
+                let action = UIAlertAction(title: "확인", style: .default, handler: nil)
+                alert.addAction(action)
+                self.present(alert, animated: true, completion: nil)
+            }
+        }
+    }
+    */
+    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return CGFloat(0)
     }
