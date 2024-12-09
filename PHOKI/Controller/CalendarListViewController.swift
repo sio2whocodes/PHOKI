@@ -42,8 +42,9 @@ class CalendarListViewController: UIViewController {
         let cancel = UIAlertAction(title: "취소".localized, style: .cancel, handler: nil)
         let save = UIAlertAction(title: "완료".localized, style: .default){ (save) in
             let title = alert.textFields?[0].text
-            let uindex:String = self.calendarInfoHelper.getUniqueIndexOfCalendar()
-            let calendarInfo = CalendarInfoInstance(title: title!, image: (UIImage(named: "bluecloud")?.jpegData(compressionQuality: 0.5))!, id: "\(uindex)", index: Int(Date().timeIntervalSince1970))
+            let uid:String = self.calendarInfoHelper.getUniqueIdOfCalendar()
+            let timestamp:Int = Int(Date().timeIntervalSince1970)
+            let calendarInfo = CalendarInfoInstance(title: title!, image: (UIImage(named: "bluecloud")?.jpegData(compressionQuality: 0.5))!, id: "\(uid)", index: timestamp)
             self.calendarInfoHelper.insertCalender(calInst: calendarInfo)
             self.calendarInfoList = self.calendarInfoHelper.fetchCalendarInfoList()
             self.collectionView.reloadData()

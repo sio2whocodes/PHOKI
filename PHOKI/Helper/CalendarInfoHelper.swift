@@ -104,11 +104,11 @@ class CalendarInfoHelper {
         }
     }
     
-    func getUniqueIndexOfCalendar() -> String {
+    func getUniqueIdOfCalendar() -> String {
         // unique idext 생성
         let uuid:String = UserDefaults.standard.value(forKey: "uuid") as? String ?? "\(UUID())"
-        let timestamp:Int64 = Int64(Date().timeIntervalSince1970)
-        let uindex:String = "\(uuid)-\(timestamp)"
-        return uindex
+        let timestamp:Int = Int(Date().timeIntervalSince1970)
+        let uid:String = "\(uuid)-\(timestamp)"
+        return uid
     }
 }
