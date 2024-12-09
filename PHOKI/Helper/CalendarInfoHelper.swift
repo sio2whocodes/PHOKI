@@ -94,6 +94,11 @@ class CalendarInfoHelper {
         let delete = NSBatchDeleteRequest(fetchRequest: fetchRequest)
         do {
             try context.execute(delete)
+            do {
+                try context.save()
+            } catch {
+                print(error.localizedDescription)
+            }
         } catch {
             print(error.localizedDescription)
         }
