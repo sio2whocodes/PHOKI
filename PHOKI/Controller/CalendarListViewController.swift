@@ -106,9 +106,7 @@ extension CalendarListViewController: UICollectionViewDataSource {
                 let alert = UIAlertController(title: "캘린더 삭제".localized, message: "'\(self.calendarInfoList[indexPath.item].title)' " + "캘린더를 삭제하시겠습니까?".localized, preferredStyle: .alert)
                 let delete = UIAlertAction(title: "삭제".localized, style: .destructive, handler: {_ in
                     self.calendarInfoHelper.deleteCalendar(calInst: self.calendarInfoList.remove(at: indexPath.item))
-                    if indexPath.item == currentCalendarIndex {
-                        currentCalendarIndex = (indexPath.item-1) % self.calendarInfoList.count
-                    }
+                    currentCalendarIndex = 0 // 캘린더 삭제시 홈탭 캘린더 1번째 캘린더로 지정
                     self.collectionView.reloadData()
                 })
                 let cancel = UIAlertAction(title: "취소".localized, style: .cancel, handler: nil)

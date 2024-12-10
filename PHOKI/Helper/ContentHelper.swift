@@ -37,6 +37,7 @@ class ContentHelper {
         } catch {
             print(error.localizedDescription)
         }
+        thumnails.removeAll()
         for content in contents {
             thumnails[content.date!] = UIImage(data: content.thumnail!)
         }

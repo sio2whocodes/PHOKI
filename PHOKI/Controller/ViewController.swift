@@ -81,6 +81,7 @@ class ViewController: UIViewController, GADBannerViewDelegate, GADFullScreenCont
         CalendarLabel.text = calendarInfoList[currentCalendarIndex].title
         titleImageView.image = UIImage(data: calendarInfoList[currentCalendarIndex].image!)
         contentHelper.fetchContents(calId: calendarInfoList[currentCalendarIndex].id)
+        self.collectionView.reloadData()
     }
 
     func collectionViewReload(){
