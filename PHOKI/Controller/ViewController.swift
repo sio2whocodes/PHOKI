@@ -78,6 +78,9 @@ class ViewController: UIViewController, GADBannerViewDelegate, GADFullScreenCont
             calendarInfoHelper.insertCalender(calInst: cii)
             calendarInfoList = calendarInfoHelper.fetchCalendarInfoList()
         }
+        if currentCalendarIndex > calendarInfoList.count-1 {
+            currentCalendarIndex = 0
+        }
         CalendarLabel.text = calendarInfoList[currentCalendarIndex].title
         titleImageView.image = UIImage(data: calendarInfoList[currentCalendarIndex].image!)
         contentHelper.fetchContents(calId: calendarInfoList[currentCalendarIndex].id)
