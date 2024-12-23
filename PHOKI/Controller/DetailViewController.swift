@@ -277,7 +277,7 @@ extension DetailViewController: UITextViewDelegate {
     
     
     @objc func keyBoardWillShow(_ sender: Notification){
-        self.view.frame.origin.y = -250
+        self.view.frame.origin.y = -280
     }
     
     @objc func keyBoardWillHide(_ sender: Notification){
