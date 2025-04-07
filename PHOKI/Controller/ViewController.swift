@@ -55,6 +55,7 @@ class ViewController: UIViewController, GADBannerViewDelegate, GADFullScreenCont
         addButtonShadow()
         setIndicator()
         selectedDate = Date()
+        calendarInfoList = calendarInfoHelper.fetchCalendarInfoList()
         setMonthView()
     }
     
@@ -78,13 +79,19 @@ class ViewController: UIViewController, GADBannerViewDelegate, GADFullScreenCont
             calendarInfoHelper.insertCalender(calInst: cii)
             calendarInfoList = calendarInfoHelper.fetchCalendarInfoList()
         }
+        // 캘린더 인덱스가 전체 캘린더 개수 범위 넘어가면 첫번째 캘린더 보여주기
         if currentCalendarIndex > calendarInfoList.count-1 {
             currentCalendarIndex = 0
         }
         CalendarLabel.text = calendarInfoList[currentCalendarIndex].title
         titleImageView.image = UIImage(data: calendarInfoList[currentCalendarIndex].image!)
-        contentHelper.fetchContents(calId: calendarInfoList[currentCalendarIndex].id)
-        self.collectionView.reloadData()
+        
+        DispatchQueue.global().async {
+            thumnails = self.contentHelper.fetchContentsOfYearMonth(calId: calendarInfoList[currentCalendarIndex].id, yyyyMM: self.yymm) ?? [:]
+            DispatchQueue.main.sync {
+                self.collectionView.reloadData()
+            }
+        }
     }
 
     func collectionViewReload(){
@@ -275,7 +282,16 @@ class ViewController: UIViewController, GADBannerViewDelegate, GADFullScreenCont
         let monthLabelText: String = calendarHelper.monthString(date: selectedDate) + "월".localized
         monthLabel.text = monthLabelText.localized + " " + calendarHelper.yearString(date: selectedDate)
         yymm = calendarHelper.yearString(date: selectedDate) + calendarHelper.monthString(date: selectedDate)
+        
+        thumnails.removeAll()
         self.collectionView.reloadData()
+        
+        DispatchQueue.global().async {
+            thumnails = self.contentHelper.fetchContentsOfYearMonth(calId: calendarInfoList[currentCalendarIndex].id, yyyyMM: self.yymm) ?? [:]
+            DispatchQueue.main.sync {
+                self.collectionView.reloadData()
+            }
+        }
     }
     
     @IBAction func previousMonth(_ sender: Any) {

@@ -25,8 +25,12 @@ class CalendarListViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.calendarInfoList = self.calendarInfoHelper.fetchCalendarInfoList()
-        self.collectionView.reloadData()
+        DispatchQueue.global().async {
+            self.calendarInfoList = self.calendarInfoHelper.fetchCalendarInfoList()
+            DispatchQueue.main.sync {
+                self.collectionView.reloadData()
+            }
+        }
     }
     
     func btnUI(){

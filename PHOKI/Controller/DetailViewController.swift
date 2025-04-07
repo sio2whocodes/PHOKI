@@ -262,7 +262,6 @@ extension DetailViewController: UIImagePickerControllerDelegate, UINavigationCon
         dismiss(animated: true, completion: nil)
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        print("end")
         view.endEditing(true)
     }
 }

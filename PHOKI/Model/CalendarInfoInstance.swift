@@ -10,7 +10,7 @@ import Foundation
 class CalendarInfoInstance {
     var title: String = "MY CALENDAR"
     var image: Data?
-    var id: String = "id"
+    var id: String = "id" // uuid
     var index: Int
     
     init(title: String, image: Data, id: String, index: Int) {

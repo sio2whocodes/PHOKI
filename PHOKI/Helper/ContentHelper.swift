@@ -43,6 +43,30 @@ class ContentHelper {
         }
     }
     
+    func fetchContentsOfYearMonth(calId: String, yyyyMM: String) -> [String:UIImage]? {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Content")
+        fetchRequest.predicate = NSPredicate(format: "calendarId == %@ AND date BEGINSWITH %@", calId, yyyyMM)
+        var contents = [Content]()
+        do {
+            contents = try context.fetch(fetchRequest) as! [Content]
+        } catch {
+            print(error.localizedDescription)
+        }
+        
+        // 전역 변수 교체 (기존)
+//        thumnails.removeAll()
+//        for content in contents {
+//            thumnails[content.date!] = UIImage(data: content.thumnail!)
+//        }
+        
+        // 딕셔너리 전달 (신규)
+        var newThumnails: [String:UIImage] = [:]
+        for content in contents {
+            newThumnails[content.date!] = UIImage(data: content.thumnail!)
+        }
+        return newThumnails
+    }
+    
     func fetchContent(date: String, calId: String)->Any?{
         var contentss = [Content]()
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Content")
