@@ -39,7 +39,7 @@ iOS Deployment Target : iOS 14.4
 | 여러개 캘린더 | ✅ |
 | 캘린더 배경사진, 이름 변경 | ✅ |
 | 캘린더 추가, 삭제 | ✅ |
-| 아이클라우드 백업, 복원 기능 | ✅ |
+| 아이클라우드 연동 기능 | ✅ |
 
 ## Structure
 ```
@@ -72,5 +72,7 @@ iOS Deployment Target : iOS 14.4
 - 1.1.1: 광고 연결, 버그 수정 (2021.06.15)
 - 1.1.2: collection view shuffle 문제 수정 (2021.09.20)
 - 1.1.3: 메모 줄바꿈 기능 수정 (2021.09.21)
+### Ver. 2
+- 2.0: cloudKit 연동 (2024.12.12)
 
 ###### this page will be updated very sooon ;)
