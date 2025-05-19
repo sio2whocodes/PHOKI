@@ -35,7 +35,7 @@ class CalendarInfoHelper {
         do {
             calendarInfo = try context.fetch(fetchRequest) as! [CalendarInfo]
         } catch {
-            print(error.localizedDescription)
+            print("in fetchCalendarInfo():", error.localizedDescription)
         }
         calendarInst = CalendarInfoInstance(title: calendarInfo[0].title!, image: calendarInfo[0].image!, id: calendarInfo[0].id!, index: Int(calendarInfo[0].index))
         return calendarInst
@@ -50,7 +50,7 @@ class CalendarInfoHelper {
         do {
             calendarInfos = try context.fetch(fetchRequest) as! [CalendarInfo]
         } catch {
-            print(error.localizedDescription)
+            print("in fetchCalendarInfoList():", error.localizedDescription)
         }
         for cal in calendarInfos {
             calendarList.append(CalendarInfoInstance(title: cal.title!, image: cal.image!, id: cal.id!, index: Int(cal.index)))

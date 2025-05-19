@@ -10,8 +10,8 @@ import CoreData
 import GoogleMobileAds
 import NVActivityIndicatorView
 
-var thumnails = [String:UIImage]()
-var calendarInfoList = [CalendarInfoInstance]()
+var thumnails:[String:UIImage] = [:]
+var calendarInfoList:[CalendarInfoInstance] = []
 var currentCalendarIndex: Int = 0
 
 class ViewController: UIViewController, GADBannerViewDelegate, GADFullScreenContentDelegate {
@@ -55,7 +55,6 @@ class ViewController: UIViewController, GADBannerViewDelegate, GADFullScreenCont
         addButtonShadow()
         setIndicator()
         selectedDate = Date()
-        calendarInfoList = calendarInfoHelper.fetchCalendarInfoList()
         setMonthView()
     }
     
@@ -85,13 +84,15 @@ class ViewController: UIViewController, GADBannerViewDelegate, GADFullScreenCont
         }
         CalendarLabel.text = calendarInfoList[currentCalendarIndex].title
         titleImageView.image = UIImage(data: calendarInfoList[currentCalendarIndex].image!)
-        
-        DispatchQueue.global().async {
-            thumnails = self.contentHelper.fetchContentsOfYearMonth(calId: calendarInfoList[currentCalendarIndex].id, yyyyMM: self.yymm) ?? [:]
-            DispatchQueue.main.sync {
-                self.collectionView.reloadData()
-            }
-        }
+        contentHelper.fetchContents(calId: calendarInfoList[currentCalendarIndex].id)
+        self.collectionView.reloadData()
+
+//        DispatchQueue.global().async {
+//            thumnails = self.contentHelper.fetchContentsOfYearMonth(calId: calendarInfoList[currentCalendarIndex].id, yyyyMM: self.yymm) ?? [:]
+//            DispatchQueue.main.sync {
+//                self.collectionView.reloadData()
+//            }
+//        }
     }
 
     func collectionViewReload(){
@@ -283,15 +284,15 @@ class ViewController: UIViewController, GADBannerViewDelegate, GADFullScreenCont
         monthLabel.text = monthLabelText.localized + " " + calendarHelper.yearString(date: selectedDate)
         yymm = calendarHelper.yearString(date: selectedDate) + calendarHelper.monthString(date: selectedDate)
         
-        thumnails.removeAll()
+//        thumnails.removeAll()
         self.collectionView.reloadData()
         
-        DispatchQueue.global().async {
-            thumnails = self.contentHelper.fetchContentsOfYearMonth(calId: calendarInfoList[currentCalendarIndex].id, yyyyMM: self.yymm) ?? [:]
-            DispatchQueue.main.sync {
-                self.collectionView.reloadData()
-            }
-        }
+//        DispatchQueue.global().async {
+//            thumnails = self.contentHelper.fetchContentsOfYearMonth(calId: calendarInfoList[currentCalendarIndex].id, yyyyMM: self.yymm) ?? [:]
+//            DispatchQueue.main.sync {
+//                self.collectionView.reloadData()
+//            }
+//        }
     }
     
     @IBAction func previousMonth(_ sender: Any) {
